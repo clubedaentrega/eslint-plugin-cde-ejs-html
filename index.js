@@ -15,7 +15,7 @@ module.exports = {
 			 */
 			preprocess(text, filename) {
 				// Load locals file
-				let locals = require(filename.slice(0, -3) + '-locals.js')
+				let locals = require(filename.slice(0, -4) + '-locals.js')
 
 				// Add super global values
 				let vars = ['formatMoney', 't', 'l', 'locale']
