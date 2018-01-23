@@ -12,6 +12,10 @@
 	],
 	"author": "Sitegui <sitegui@sitegui.com.br>",
 	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sitegui/eslint-plugin-ejs-html"
+	},
 	"scripts": {
 		"test": "mocha tests --recursive"
 	},
