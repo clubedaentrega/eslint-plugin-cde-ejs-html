@@ -1,5 +1,5 @@
 {
-	"name": "eslint-plugin-ejs-html",
+	"name": "eslint-plugin-cde-ejs-html",
 	"version": "1.0.0",
 	"description": "A plugin that allows lint the JS inside EJS tags",
 	"keywords": [
@@ -14,7 +14,7 @@
 	"main": "index.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sitegui/eslint-plugin-ejs-html"
+		"url": "https://github.com/clubedaentrega/eslint-plugin-cde-ejs-html"
 	},
 	"scripts": {
 		"test": "mocha tests --recursive"
