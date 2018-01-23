@@ -1,0 +1,33 @@
+{
+	"name": "eslint-plugin-ejs-html",
+	"version": "1.0.0",
+	"description": "A plugin that allows lint the JS inside EJS tags",
+	"keywords": [
+		"eslint",
+		"eslintplugin",
+		"eslint-plugin",
+		"ejs",
+		"ejs-html",
+		"html"
+	],
+	"author": "Sitegui <sitegui@sitegui.com.br>",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha tests --recursive"
+	},
+	"dependencies": {
+		"ejs-html": "^5.1.2",
+		"source-map": "^0.7.0"
+	},
+	"devDependencies": {
+		"eslint": "~4.16.0",
+		"mocha": "^5.0.0"
+	},
+	"peerDependencies": {
+		"eslint": ">=0.8.0"
+	},
+	"engines": {
+		"node": ">=0.8.0"
+	},
+	"license": "ISC"
+}
