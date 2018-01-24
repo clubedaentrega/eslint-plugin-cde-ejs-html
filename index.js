@@ -32,13 +32,19 @@ module.exports = {
 					}
 				}
 
-				let fn = ejs.compile(text, {
-					filename,
-					sourceMap: true,
-					compileDebug: false,
-					vars
-				})
+				let fn
+				try {
+					fn = ejs.compile(text, {
+						filename,
+						sourceMap: true,
+						compileDebug: false,
+						vars
+					})
+				} catch (e) {
+					return []
+				}
 				compiled.set(filename, fn)
+				require('fs').writeFileSync('code.js', fn.code)
 				return [fn.code]
 			},
 
@@ -49,6 +55,10 @@ module.exports = {
 			postprocess(messages, filename) {
 				let fn = compiled.get(filename)
 				compiled.delete(filename)
+
+				for (let e of messages[0]) {
+					delete e.source
+				}
 
 				// Spawn and wait for server.js
 				return JSON.parse(cp.execFileSync('node', [path.join(__dirname, 'server.js')], {
