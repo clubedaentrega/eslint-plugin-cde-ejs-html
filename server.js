@@ -77,11 +77,11 @@ process.stdin.once('end', () => {
 				return
 			}
 
-			log.write(`Search ${line}:${column}, get ${original.line}:${original.column}, remaps to ${generated.line}:${generated.column}, returns ${original.line}:${original.column + (generated.column - column)}\n`)
+			log.write(`Search ${line}:${column}, get ${original.line}:${original.column}, remaps to ${generated.line}:${generated.column}, returns ${original.line}:${original.column + (column - generated.column)}\n`)
 
 			return {
 				line: original.line,
-				column: original.column + (generated.column - column)
+				column: original.column + (column - generated.column)
 			}
 		}
 
