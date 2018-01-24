@@ -44,15 +44,19 @@ module.exports = {
 					return []
 				}
 				compiled.set(filename, fn)
-				require('fs').writeFileSync('code.js', fn.code)
 				return [fn.code]
 			},
 
 			/**
 			 * @param {Array<Array<Object>>} messages
 			 * @param {string} filename
+			 * @returns {Array<Object>}
 			 */
 			postprocess(messages, filename) {
+				if (!messages.length) {
+					return messages
+				}
+
 				let fn = compiled.get(filename)
 				compiled.delete(filename)
 

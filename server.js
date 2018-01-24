@@ -6,9 +6,6 @@
 // This file will be spawned for each linted file to remap errors
 
 let sourceMap = require('source-map'),
-	log = require('fs').createWriteStream('gui.txt', {
-		flags: 'w'
-	}),
 	input = ''
 
 // Read data from stdin
@@ -27,16 +24,12 @@ process.stdin.once('end', () => {
 	sourceMap.SourceMapConsumer.with(map, null, consumer => {
 		let finalMessages = []
 
-		log.write('original -> generated\n')
-		consumer.eachMapping(each => log.write(`${each.originalLine}:${each.originalColumn} -> ${each.generatedLine}:${each.generatedColumn}\n`))
-
 		for (let message of messages) {
 			// Try to translate start position
 			let start = translate(message.line, message.column - 1)
 			if (!start) {
 				continue
 			}
-			log.write('\n' + message.message + '\n')
 			message.line = start.line
 			message.column = start.column + 1
 
@@ -46,10 +39,12 @@ process.stdin.once('end', () => {
 				if (end) {
 					message.endLine = end.line
 					message.endColumn = end.column + 1
+				} else {
+					delete message.endLine
+					delete message.endColumn
 				}
 			}
 
-			log.write(`${JSON.stringify(message, null, ' ')}\n`)
 			finalMessages.push(message)
 		}
 
@@ -78,14 +73,10 @@ process.stdin.once('end', () => {
 				return
 			}
 
-			log.write(`Search ${line}:${column}, get ${original.line}:${original.column}, remaps to ${generated.line}:${generated.column}, returns ${original.line}:${original.column + (column - generated.column)}\n`)
-
 			return {
 				line: original.line,
 				column: original.column + (column - generated.column)
 			}
 		}
-
-		log.end()
 	})
 })
