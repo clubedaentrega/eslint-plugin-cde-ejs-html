@@ -49,6 +49,7 @@ process.stdin.once('end', () => {
 				}
 			}
 
+			log.write(`${JSON.stringify(message, null, ' ')}\n`)
 			finalMessages.push(message)
 		}
 

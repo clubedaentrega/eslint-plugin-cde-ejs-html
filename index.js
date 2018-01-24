@@ -58,6 +58,7 @@ module.exports = {
 
 				for (let e of messages[0]) {
 					delete e.source
+					delete e.fix
 				}
 
 				// Spawn and wait for server.js
