@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-cde-ejs-html",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A plugin that allows lint the JS inside EJS tags",
 	"keywords": [
 		"eslint",
@@ -20,7 +20,7 @@
 		"test": "mocha tests --recursive"
 	},
 	"dependencies": {
-		"ejs-html": "^5.1.4",
+		"ejs-html": "^5.1.5",
 		"source-map": "^0.7.0"
 	},
 	"devDependencies": {
