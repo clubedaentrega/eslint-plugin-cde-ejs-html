@@ -18,7 +18,7 @@ module.exports = {
 				let locals = require(filename.slice(0, -4) + '-locals.js')
 
 				// Add super global values
-				let vars = ['formatMoney', 't', 'l', 'locale']
+				let vars = ['formatMoney', 't', 'l', 'locale', 'formatDatetime']
 
 				// Get local variable names
 				for (let name of Object.keys(locals.locals)) {
